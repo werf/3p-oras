@@ -4,14 +4,14 @@ import (
 	"context"
 
 	ctypes "github.com/docker/cli/cli/config/types"
-	"github.com/docker/docker/api/types"
+	apiregistry "github.com/docker/docker/api/types/registry"
 	"github.com/docker/docker/registry"
 )
 
 // Login logs in to a docker registry identified by the hostname.
 func (c *Client) Login(ctx context.Context, hostname, username, secret string, insecure bool) error {
 	hostname = resolveHostname(hostname)
-	cred := types.AuthConfig{
+	cred := apiregistry.AuthConfig{
 		Username:      username,
 		ServerAddress: hostname,
 	}
